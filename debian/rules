@@ -2,7 +2,7 @@
 # -*- makefile -*-
 
 # Uncomment this to turn on verbose mode.
-export DH_VERBOSE=1
+#export DH_VERBOSE=1
 include /usr/share/dpkg/pkg-info.mk
 export DEB_VERSION_UPSTREAM
 
@@ -10,20 +10,6 @@ DKMS_INSTALLDIR=debian/gpib-dkms/usr/src/gpib-${DEB_VERSION_UPSTREAM}
 DKMS_SOURCEDIR=linux-gpib-kernel
 
 USER_SRC_DIR=linux-gpib-user
-
-# export CPPFLAGS=$(shell dpkg-buildflags --get CPPFLAGS)
-#export CFLAGS=$(shell dpkg-buildflags --get CFLAGS)
-#export CXXFLAGS=$(shell dpkg-buildflags --get CXXFLAGS)
-#export LDFLAGS=$(shell dpkg-buildflags --get LDFLAGS)
-
-#export DEB_HOST_ARCH = $(shell dpkg-architecture -qDEB_HOST_ARCH)
-
-PACKAGES := gpib-dkms libgpib-dev libgpib0 libgpib-bin python3-gpib libtcl8.6-gpib libgpib-doc
-
-
-#DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
-#DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
-#PY3VERS=$(shell py3versions -vr)
 
 export PYBUILD_NAME=gpib
 
@@ -92,163 +78,6 @@ else
 	dh_auto_clean
 endif
 
-# override_dh_auto_install:
-# 	dh_auto_install
-# 	cd $(USER_SRC_DIR)/language/python && python3 setup.py install \
-# 		--force --root=$(CURDIR)/debian/tmp \
-# 		--no-compile -O0 --install-layout=deb
-
-# config.status:
-# 	dh_testdir
-# 	cp -a linux-gpib-kernel kernel
-# 	cp -a linux-gpib-user   build
-# 	cp /usr/share/misc/config.sub build
-# 	cp /usr/share/misc/config.guess build
-# 	set -e ;for pyvers in ${PY3VERS};\
-# 	do\
-# 		cp -a build/language/python build/language/python$$pyvers;\
-# 	done
-# 	(cd build; \
-# 	./bootstrap; \
-# 	./configure --host=$(DEB_HOST_GNU_TYPE) \
-# 		--build=$(DEB_BUILD_GNU_TYPE) \
-# 		--prefix=/usr \
-# 		--sysconfdir=/etc \
-# 		--mandir=\$${prefix}/share/man \
-# 		--infodir=\$${prefix}/share/info \
-# 		--enable-static \
-# 		--with-tcl=/usr/lib/tcl8.6/)
-# 	touch $@
-
-
-# build: build-stamp
-# build-stamp:  config.status
-# 	dh_testdir
-#
-# 	# Add here commands to compile the package.
-# 	cd build/include && $(MAKE)
-# 	cd build/lib && $(MAKE)
-# 	cd build/language && $(MAKE)
-# 	cd build/examples && $(MAKE)
-# 	cd build/doc && $(MAKE)
-# 	set -e ;\
-# 	for pyvers in ${PY3VERS};\
-# 	do\
-# 		(cd build/language/python$$pyvers;\
-# 		python$$pyvers setup.py build; )\
-# 	done
-# 	cd build/doc && (LANG="en_US"; docbook2man linux-gpib.sgml )
-# 	(cd build/language/perl; \
-# 	perl Makefile.PL INSTALLDIRS=vendor; \
-# 	$(MAKE) OPTIMIZE="-O2 -g -Wall" LD_RUN_PATH=)
-#
-# 	touch $@
-#
-# clean:
-# 	dh_testdir
-# 	dh_testroot
-# 	rm -f build-stamp
-# 	rm -f config.status
-# 	#rm -f config.sub
-# 	#rm -f config.guess
-# 	# Add here commands to clean up after the build process.
-# 	rm -rf build
-# 	rm -rf kernel
-#
-# 	dh_clean
-
-# install: build
-# 	dh_testdir
-# 	dh_testroot
-# 	dh_prep
-# 	dh_installdirs
-#
-# 	# Add here commands to install the package into debian/tmp
-# 	cd build/include && $(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
-# 	cd build/lib && $(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
-# 	cd build/language && $(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
-# 	cd build/examples && $(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
-# 	cd build/doc && $(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
-#
-# 	#Documentation for C
-# 	#mkdir -p debian/tmp/usr/share/linux-gpib/examples-c
-# 	#cp build/examples/*.c debian/tmp/usr/share/linux-gpib/examples-c
-#
-# 	#Install Python bindings
-# 	for pyvers in $(PY3VERS); do \
-# 		(cd build/language/python$$pyvers;\
-# 		python$$pyvers setup.py install --prefix=/usr --root=$(CURDIR)/debian/tmp;)\
-# 	done
-# 	#Documentation for Python
-# 	#mkdir -p debian/tmp/usr/share/linux-gpib/examples-python
-# 	#cp build/language/python/README debian/tmp/usr/share/linux-gpib/examples-python
-#
-# 	#Install Perl modules
-# 	cd build/language/perl && $(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
-# 	#Documentation for Perl
-# 	#mkdir -p debian/tmp/usr/share/linux-gpib/examples-perl
-# 	#cp build/language/perl/examples/n8ur/* debian/tmp/usr/share/linux-gpib/examples-perl
-#
-# 	#Documentation for Tcl
-# 	#mkdir -p debian/tmp/usr/share/linux-gpib/examples-tcl
-# 	#cp -a build/language/tcl/examples/* debian/tmp/usr/share/linux-gpib/examples-tcl
-# 	#cp build/language/tcl/README debian/tmp/usr/share/linux-gpib/examples-tcl
-#
-# 	#Install manpage
-# 	#mkdir -p debian/tmp/usr/share/man/man1
-# 	#cp debian/manpages/ibtest.1 debian/tmp/usr/share/man/man1
-# 	#cp debian/manpages/ibterm.1 debian/tmp/usr/share/man/man1
-# 	#mkdir -p debian/tmp/usr/share/man/man8
-# 	#cp build/doc/gpib_config.8 debian/tmp/usr/share/man/man8
-#
-# 	#make modules source
-# 	#mkdir -p debian/tmp/usr/src/modules/gpib
-# 	#cp -a kernel/*	debian/tmp/usr/src/modules/gpib
-# 	#mkdir -p debian/tmp/usr/src/modules/gpib/debian
-# 	#(cd debian; cp changelog  control common-description \
-# #		compat *.modules.in rules copyright \
-# #		tmp/usr/src/modules/gpib/debian)
-# 	#(cd debian/tmp/usr/src/; tar -c modules | bzip2 -9 > gpib.tar.bz2 && rm -rf modules)
-# 	#mkdir -p debian/tmp/usr/share/modass/overrides
-# 	#ln -s ../packages/default.sh debian/gpib-modules-source/usr/share/modass/overrides/gpib-modules-source
-#
-# 	#Only /etc/pcmcia is in build/etc, I think that should be removed too ???
-# 	#cp -a build/etc debian/tmp
-# 	# etc directory made by the author
-# 	#cp -a debian/etc debian/tmp
-# 	#mkdir -p debian/tmp/etc/udev
-# 	#Install /etc/gpib.conf
-# 	#cp build/util/templates/gpib.conf debian/tmp/etc
-# 	#Install gpib.agent (free) and non-free firmware, must be changed before upload ???
-# 	#cp -a debian/lib debian/tmp
-# 	#Install the other include file needed (Mention to Frank that it lacks ???)
-# 	#cp build/include/gpib_user.h debian/tmp/usr/include/gpib
-
-# binary-indep: build install
-#
-# binary-arch: build install
-# 	dh_testdir
-# 	dh_testroot
-# 	dh_installchangelogs build/ChangeLog
-# 	dh_installdocs
-# 	dh_installdocs -plibgpib-doc build/AUTHORS build/COPYING build/README \
-# 		build/README.HAMEG build/README.hp82335 build/TODO
-# 	# build/doc/greg_goebel_hpib_tutorial.html build/doc/linux-gpib.pdf
-# 	dh_install --sourcedir=debian/tmp
-# 	dh_installman
-# 	dh_link
-# 	dh_strip
-# 	dh_compress
-# 	dh_perl
-# 	dh_python3
-# 	dh_fixperms
-# 	dh_makeshlibs
-# 	dh_installdeb
-# 	dh_shlibdeps
-# 	dh_gencontrol
-# 	dh_md5sums
-# 	dh_builddeb
-
 get-orig-source:
 	set -e;\
 	VER=$(DEB_VERSION_UPSTREAM);\
@@ -264,7 +93,3 @@ get-orig-source:
 	mv linux-gpib-$$VER/linux-gpib-kernel-$$VER linux-gpib-$$VER/linux-gpib-kernel;\
 	mv linux-gpib-$$VER gpib-$$VER;\
 	tar czf gpib_$$VER.orig.tar.gz gpib-$$VER;\
-
-
-# binary: binary-indep binary-arch
-# .PHONY: build clean binary-indep binary-arch binary install
