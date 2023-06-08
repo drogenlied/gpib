@@ -1,0 +1,3 @@
+debian/lib/firmware/niusbb* usr/share/usb/ni_usb_gpib
+debian/lib/firmware/82357a_fw.hex usr/share/usb/agilent_82357a
+debian/lib/firmware/measat_releaseX1.8.hex usr/share/usb/agilent_82357a

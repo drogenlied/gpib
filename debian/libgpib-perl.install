@@ -1,1 +1,1 @@
-usr/lib/*/perl*
+usr/lib/${DEB_HOST_MULTIARCH}/perl*

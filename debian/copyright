@@ -2,7 +2,8 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://linux-gpib.sourceforge.net/
 
 Files: *
-Copyright: 2001-2014 Frank Mori Hess <fmhess@users.sourceforge.net>
+Copyright: 2013-2023 Dave Penkler <dpenkler@gmail.com>
+           2001-2022 Frank Mori Hess <fmhess@users.sourceforge.net>
            1997-1999 David A. Schleef <ds@stm.lbl.gov>
            2005-2006 Ian Abbott
            2003 Bernd Porr <Bernd.Porr@cn.stir.ac.uk>

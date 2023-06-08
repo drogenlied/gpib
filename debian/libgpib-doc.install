@@ -1,1 +1,6 @@
-usr/share/linux-gpib/*	usr/share/doc/libgpib-doc
+usr/share/linux-gpib-user/* usr/share/doc/libgpib-doc
+linux-gpib-user/language/tcl/examples/* usr/share/doc/libgpib-doc/examples-tcl
+linux-gpib-user/language/tcl/README usr/share/doc/libgpib-doc/examples-tcl
+linux-gpib-user/language/perl/examples/n8ur/* usr/share/doc/libgpib-doc/examples-perl
+linux-gpib-user/language/python/README usr/share/doc/libgpib-doc/examples-python
+linux-gpib-user/examples/*.c usr/share/doc/libgpib-doc/examples-c

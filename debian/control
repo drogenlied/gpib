@@ -2,20 +2,22 @@ Source: gpib
 Section: science
 Priority: optional
 Maintainer: Gudjon I. Gudjonsson <gudjon@gudjon.org>
-Build-Depends: debhelper (>= 11), 
+Build-Depends: debhelper (>= 13),
                dh-python,
-               autotools-dev, 
-               automake, 
-               bison, 
-               flex, 
+               dkms,
+               autotools-dev,
+               automake,
+               bison,
+               flex,
                bzip2,
-               doxygen, 
-               docbook-utils, 
+               doxygen,
+               docbook-utils,
                docbook-to-man,
-               tcl8.6-dev, 
-               perl, 
-               python3-all-dev
-Standards-Version: 4.4.1
+               tcl8.6-dev,
+               perl,
+               python3-all-dev,
+               python3-setuptools
+Standards-Version: 4.6.2
 
 Package: libgpib-dev
 Section: libdevel
@@ -25,37 +27,43 @@ Depends: libgpib0 (= ${binary:Version}),
          ${shlibs:Depends}, 
          ${misc:Depends}
 Description: C bindings for GPIB (IEEE 488) kernel driver -- headers
- ${Common:Description}
  This package contains headers, documentation and static libraries.
+ .
+ Development files for libgpib.
 
 Package: libgpib0
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends}
-Recommends: gpib-modules, libgpib-bin
+Recommends: gpib-dkms, libgpib-bin
 Description: C bindings for GPIB (IEEE 488) kernel driver
- ${Common:Description}
+ A library for interactig with GPIB devices.
+ .
  This package contains the shared library.
 
 Package: libgpib-bin
 Architecture: any
 Depends: ${shlibs:Depends}, 
-         ${misc:Depends}
+         ${misc:Depends},
+         fxload
 Description: Support and configuration applications for the GPIB library
  ${Common:Description}
  This package contains configuration files and binaries for libgpib
+ .
+ udev rules, firmware, configuration and utility scripts for GPIB.
 
 Package: libgpib-perl
 Section: perl
 Architecture: any
-Depends: perl (>=5.8.8), 
-         ${shlibs:Depends}, 
-         ${perl:Depends}, 
+Depends: perl (>=5.8.8),
+         ${shlibs:Depends},
+         ${perl:Depends},
          ${misc:Depends}
 Description: Perl bindings for the GPIB library
- ${Common:Description}
  This package contains the bindings for perl.
+ .
+ Control GPIB devices from Perl5.
 
 Package: python3-gpib
 Section: python
@@ -64,9 +72,11 @@ Depends: ${shlibs:Depends},
          ${python3:Depends},
          ${misc:Depends}
 Provides: ${python3:Provides}
+Recommends: python3-pyvisa-py
 Description: Python3 bindings for the GPIB library
- ${Common:Description}
  This package contains the bindings for Python3.
+ .
+ Control GPIB devices from Python3. Goes well with pyvisa-py.
 
 Package: libtcl8.6-gpib
 Section: libs
@@ -74,8 +84,9 @@ Architecture: any
 Depends: ${shlibs:Depends}, 
          ${misc:Depends}
 Description: Tcl 8.6 bindings for the GPIB library
- ${Common:Description}
  This package contains the bindings for tcl8.6.
+ .
+ Control GPIB devices form TCL 8.6.
 
 Package: libgpib-doc
 Section: doc
@@ -83,16 +94,24 @@ Architecture: all
 Depends: ${misc:Depends}
 Recommends: w3m | www-browser
 Description:  Documentation for the linux-gpib library
- ${Common:Description}
  This package contains the documentation and examples for the
  linux-gpib library.
+ .
+ HTML documentation and example code for C, Python, Perl and TCL.
 
-Package: gpib-modules-source
+Package: gpib-dkms
+Section: kernel
 Architecture: all
-Depends:  ${misc:Depends}, bzip2
-Recommends: module-assistant
-Suggests: kernel-package
-Description: kernel modules for various GPIB boards
- ${Common:Description}
- This package contains the source for the kernel modules for various
- GPIB boards.
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: firmware-gpib
+Description: Linux GPIB DKMS kernel modules
+ This package uses DKMS to automatically build the linux GPIB driver
+ kernel modules.
+
+Package: firmware-gpib
+Section: non-free/kernel
+Architecture: all
+Depends: ${misc:Depends}
+Description: Firmware for GPIB adapters
+ This package contains the necessary firmware to operate certain
+ National Instruments and HP/Agilent/Keysight GPIB adapters.

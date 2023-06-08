@@ -1,5 +1,13 @@
+gpib (4.3.5-1.1+2053) UNRELEASED; urgency=medium
+
+  [ Jan Binder ]
+  * packaging
+
+ -- Jan Binder <jan-git@nlogn.org>  Thu, 08 Jun 2023 10:29:55 +0200
+
 gpib (4.3.5-1) UNRELEASED; urgency=medium
 
+  [ Gudjon I. Gudjonsson ]
   * New upstream release
   * Move python files from usr/local to usr. Error in configure script.
   * debian/rules: Add DEB_HOST_ARCH 
