@@ -1,8 +1,14 @@
-.TH ipterm 1 "February 18, 2018"
+.TH ibterm 1 "February 18, 2018"
 
+.SH NAME
 ibterm help info -
 
-Summary:
+.SH SYNOPSYS
+  /usr/bin/ibterm -d pad \
+         [-m minor] [-s sad] [-i eoi] [-e eos] [-r reos] [-b bin] [-x xeos] \
+         [-t timeout] [-p prompt] [-f history_file] [-N] [-X]
+
+.SH DESCRIPTION
 An interactive terminal program for sending commands to a device over an 
 IEEE488 general purpose instrument bus and printing the responses.
 
@@ -36,7 +42,7 @@ IEEE488 general purpose instrument bus and printing the responses.
 .TP
 .B \-h prints this help info and exits.
 
-Operation:
+.SH OPERATION
   loop:
     Prompt on stdout
     Read a line of text from stdin
@@ -47,7 +53,7 @@ Operation:
         else print the response on stdout
     Go back to loop.
 
-Notes:
+.SH NOTES:
   To quit the programme enter the EOF character (Ctrl-d) at the prompt.
   For interactivity, timeout should not be greater than 13 i.e. 10 secs.
   The timeout values are documented under the ibtmo() entry of the 
@@ -55,10 +61,6 @@ Notes:
   A device read can always be triggered by hitting <Enter> at the prompt.
   Interrupting the programme while reading from the device may cause hangs.
 
-Also:
+.SH SEE ALSO
   See the readline(3) manpage for editing input and searching history.
 
-Usage:
-  /usr/bin/ibterm -d pad \
-         [-m minor] [-s sad] [-i eoi] [-e eos] [-r reos] [-b bin] [-x xeos] \
-         [-t timeout] [-p prompt] [-f history_file] [-N] [-X]
