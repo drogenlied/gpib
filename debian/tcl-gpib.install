@@ -1,2 +1,3 @@
-usr/lib/${DEB_HOST_MULTIARCH}/*tcl*.so
-usr/lib/${DEB_HOST_MULTIARCH}/*tcl*.a
+usr/lib/${DEB_HOST_MULTIARCH}/*tcl*.so usr/lib/tcltk/${DEB_HOST_MULTIARCH}/gpib${env:DEB_VERSION_UPSTREAM}
+usr/lib/${DEB_HOST_MULTIARCH}/*tcl*.a usr/lib/tcltk/${DEB_HOST_MULTIARCH}/gpib${env:DEB_VERSION_UPSTREAM}
+debian/pkgIndex.tcl usr/lib/tcltk/${DEB_HOST_MULTIARCH}/gpib${env:DEB_VERSION_UPSTREAM}

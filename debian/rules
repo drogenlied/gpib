@@ -5,13 +5,12 @@
 #export DH_VERBOSE=1
 include /usr/share/dpkg/pkg-info.mk
 export DEB_VERSION_UPSTREAM
+export PYBUILD_NAME=gpib
 
 DKMS_INSTALLDIR=debian/gpib-dkms/usr/src/gpib-${DEB_VERSION_UPSTREAM}
 DKMS_SOURCEDIR=linux-gpib-kernel
-
 USER_SRC_DIR=linux-gpib-user
 
-export PYBUILD_NAME=gpib
 
 %:
 	dh $@ -Ngpib-dkms -Npython3-gpib --sourcedirectory=$(USER_SRC_DIR)

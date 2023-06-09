@@ -1,1 +1,1 @@
-usr/lib
+usr/lib/tcltk/${DEB_HOST_MULTIARCH}/gpib${env:DEB_VERSION_UPSTREAM}
