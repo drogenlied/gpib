@@ -77,7 +77,7 @@ Description: Python3 bindings for the GPIB library
  .
  Control GPIB devices from Python3. Goes well with pyvisa-py.
 
-Package: libtcl8.6-gpib
+Package: tcl-gpib
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, 

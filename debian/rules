@@ -14,20 +14,21 @@ USER_SRC_DIR=linux-gpib-user
 export PYBUILD_NAME=gpib
 
 %:
-	dh $@ -Ngpib-dkms -Npython3-gpib --sourcedirectory=$(USER_SRC_DIR)
+	dh $@ -Ngpib-dkms -Npython3-gpib -Ntcl-gpib --sourcedirectory=$(USER_SRC_DIR)
 	dh $@ -ppython3-gpib --sourcedirectory=$(USER_SRC_DIR)/language/python --with python3 --buildsystem=pybuild
 	dh $@ -pgpib-dkms --sourcedirectory=$(DKMS_SOURCEDIR) --with dkms
 
-override_dh_auto_configure:
-	echo "INTERNALS"$(DH_INTERNAL_OPTIONS)
+override_dh_autoreconf:
+	cp $(CURDIR)/ChangeLog $(USER_SRC_DIR)
+	dh_autoreconf
 
+override_dh_auto_configure:
 ifneq (,$(findstring pgpib-dkms,$(DH_INTERNAL_OPTIONS)))
 	echo Nothing to do here
 else ifneq (,$(findstring ppython3-gpib,$(DH_INTERNAL_OPTIONS)))
 	dh_auto_configure
 else
-	cp $(CURDIR)/ChangeLog $(USER_SRC_DIR)
-	dh_auto_configure -Ngpib-dkms -Npython3-gpib -- \
+	dh_auto_configure -- \
 		--host=$(DEB_HOST_GNU_TYPE) \
 		--build=$(DEB_BUILD_GNU_TYPE) \
 		--prefix=/usr \
@@ -36,6 +37,7 @@ else
 		--infodir=\$${prefix}/share/info \
 		--enable-static \
 		--disable-python-binding \
+		--disable-tcl-binding \
 		--with-tcl=/usr/lib/tcl8.6/
 endif
 
