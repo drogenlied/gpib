@@ -1,3 +1,4 @@
+debian/manpages/findlisteners.1
 debian/manpages/ibtest.1
 debian/manpages/ibterm.1
 linux-gpib-user/doc/gpib_config.8

@@ -1,0 +1,24 @@
+.TH FINDLISTENERS 1 "JUNE 2023" Linux "User Manuals"
+.SH NAME
+findlisteners \- A utility to find GPIB devices on a bus
+.SH SYNOPSYS
+.B findlisteners [-h] [-d <device pad>] [[-m <minor>] | <board name>]
+
+.SH DESCRIPTION
+Finds all GPIB devices listening on a bus or a primary address.
+
+.SH OPTIONS
+The optional <board name> is the name of the board from gpib.conf
+.TP
+.B \-d <device primary address (pad)>                (optional, no default)
+If the <device pad> is not specified all pads are scanned.
+.TP
+.B \-m <minor>                                       (optional, default=0)
+If a <board name> is specified the <minor> is ignored.
+.TP
+.B \-h prints this help info and exits.
+
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Manual page written by Jan M. Binder <jan-git@nlogn.org>

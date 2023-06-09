@@ -48,7 +48,6 @@ Depends: ${shlibs:Depends},
          ${misc:Depends},
          fxload
 Description: Support and configuration applications for the GPIB library
- ${Common:Description}
  This package contains configuration files and binaries for libgpib
  .
  udev rules, firmware, configuration and utility scripts for GPIB.
