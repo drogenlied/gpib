@@ -5,12 +5,9 @@ Maintainer: Gudjon I. Gudjonsson <gudjon@gudjon.org>
 Build-Depends: debhelper (>= 13),
                dh-python,
                dkms,
-               autotools-dev,
-               automake,
                bison,
                flex,
                bzip2,
-               doxygen,
                docbook-utils,
                docbook-to-man,
                tcl8.6-dev,
@@ -23,8 +20,7 @@ Package: libgpib-dev
 Section: libdevel
 Architecture: any
 Replaces: libgpib0-dev
-Depends: libgpib0 (= ${binary:Version}), 
-         ${shlibs:Depends}, 
+Depends: libgpib0 (= ${binary:Version}),
          ${misc:Depends}
 Description: C bindings for GPIB (IEEE 488) kernel driver -- headers
  This package contains headers, documentation and static libraries.
@@ -70,7 +66,6 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${python3:Depends},
          ${misc:Depends}
-Provides: ${python3:Provides}
 Recommends: python3-pyvisa-py
 Description: Python3 bindings for the GPIB library
  This package contains the bindings for Python3.
@@ -101,7 +96,7 @@ Description:  Documentation for the linux-gpib library
 Package: gpib-dkms
 Section: kernel
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${misc:Depends}
 Recommends: firmware-gpib
 Description: Linux GPIB DKMS kernel modules
  This package uses DKMS to automatically build the linux GPIB driver

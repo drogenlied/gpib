@@ -1,6 +1,5 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 include /usr/share/dpkg/pkg-info.mk
@@ -10,7 +9,6 @@ export PYBUILD_NAME=gpib
 DKMS_INSTALLDIR=debian/gpib-dkms/usr/src/gpib-${DEB_VERSION_UPSTREAM}
 DKMS_SOURCEDIR=linux-gpib-kernel
 USER_SRC_DIR=linux-gpib-user
-
 
 %:
 	dh $@ -Ngpib-dkms -Npython3-gpib --sourcedirectory=$(USER_SRC_DIR)
@@ -77,19 +75,3 @@ ifneq (,$(findstring pgpib-dkms,$(DH_INTERNAL_OPTIONS)))
 else
 	dh_auto_clean
 endif
-
-get-orig-source:
-	set -e;\
-	VER=$(DEB_VERSION_UPSTREAM);\
-	wget -q "https://sourceforge.net/projects/linux-gpib/files/linux-gpib for 3.x.x and 2.6.x kernels/$$VER/linux-gpib-$$VER.tar.gz/download";\
-	mv download linux-gpib-$$VER.tar.gz;\
-	tar xzf linux-gpib-$$VER.tar.gz;\
-	rm -f linux-gpib-$$VER.tar.gz;\
-	cd linux-gpib-$$VER && tar xzf linux-gpib-user-$$VER.tar.gz;cd ..;\
-	rm -f linux-gpib-$$VER/linux-gpib-user-$$VER.tar.gz;\
-	mv linux-gpib-$$VER/linux-gpib-user-$$VER linux-gpib-$$VER/linux-gpib-user;\
-	cd linux-gpib-$$VER && tar xzf linux-gpib-kernel-$$VER.tar.gz;cd ..;\
-	rm -f linux-gpib-$$VER/linux-gpib-kernel-$$VER.tar.gz;\
-	mv linux-gpib-$$VER/linux-gpib-kernel-$$VER linux-gpib-$$VER/linux-gpib-kernel;\
-	mv linux-gpib-$$VER gpib-$$VER;\
-	tar czf gpib_$$VER.orig.tar.gz gpib-$$VER;\
