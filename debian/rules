@@ -14,7 +14,7 @@ USER_SRC_DIR=linux-gpib-user
 export PYBUILD_NAME=gpib
 
 %:
-	dh $@ -Ngpib-dkms -Npython3-gpib -Ntcl-gpib --sourcedirectory=$(USER_SRC_DIR)
+	dh $@ -Ngpib-dkms -Npython3-gpib --sourcedirectory=$(USER_SRC_DIR)
 	dh $@ -ppython3-gpib --sourcedirectory=$(USER_SRC_DIR)/language/python --with python3 --buildsystem=pybuild
 	dh $@ -pgpib-dkms --sourcedirectory=$(DKMS_SOURCEDIR) --with dkms
 
@@ -37,7 +37,6 @@ else
 		--infodir=\$${prefix}/share/info \
 		--enable-static \
 		--disable-python-binding \
-		--disable-tcl-binding \
 		--with-tcl=/usr/lib/tcl8.6/
 endif
 
