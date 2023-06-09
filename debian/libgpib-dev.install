@@ -1,5 +1,4 @@
 usr/include/*
 usr/lib/${DEB_HOST_MULTIARCH}/libgpib.so
-usr/lib/${DEB_HOST_MULTIARCH}/libgpib.la
 usr/lib/${DEB_HOST_MULTIARCH}/libgpib.a
 usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/libgpib.pc
