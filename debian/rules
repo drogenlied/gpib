@@ -34,7 +34,8 @@ else
 		--infodir=\$${prefix}/share/info \
 		--enable-static \
 		--disable-python-binding \
-		--with-tcl=/usr/lib/tcl8.6/
+		--disable-php-binding \
+		--disable-guile-binding
 endif
 
 override_dh_auto_build:

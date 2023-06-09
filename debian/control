@@ -10,7 +10,7 @@ Build-Depends: debhelper (>= 13),
                bzip2,
                docbook-utils,
                docbook-to-man,
-               tcl8.6-dev,
+               tcl-dev,
                perl,
                python3-all-dev,
                python3-setuptools
