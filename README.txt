@@ -7,12 +7,12 @@ The Linux GPIB Package
 
 This is a GPIB/IEEE-488 driver and utility package for LINUX.
 
-This software distribution package linux-gpib-4.3.5.tar.gz contains
+This software distribution package linux-gpib-x.x.x.tar.gz contains
 this README and two tarballs:
 
-1) kernel modules in linux-gpib-kernel-4.3.5.tar.gz
+1) kernel modules in linux-gpib-kernel-x.x.x.tar.gz
 
-2) user space software in linux-gpib-user-4.3.5.tar.gz containing the
+2) user space software in linux-gpib-user-x.x.x.tar.gz containing the
    config program, library, device scripts, examples and documentation
 
 Untar each file and see the respective INSTALL files for instructions
@@ -44,7 +44,7 @@ Changes since the linux-gpib-4.3.4 release
 	  
 Note: If you have any pre 4.3.0 gpib udev rules files in
       /etc/udev/rules.d/ please remove them before installing
-      linux-gpib-user-4.3.5.
+      linux-gpib-user-x.x.x.
       
       The files to remove are:
 	   99-agilent_82357a.rules
