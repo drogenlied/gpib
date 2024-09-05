@@ -1088,6 +1088,13 @@ to initialize the adapter under Linux.
 The linux-gpib tarball contains udev rules which will
 automatically run gpib_config after the device is plugged in.
 </para>
+<para>
+Beware of inexpensive NI GPIB-USB-HS clones. While they work on
+Windows most will not and cannot be made to work with linux-gpib. See
+the end of the discussion
+on <ulink URL="https://sourceforge.net/p/linux-gpib/bugs/82/"> bug
+ticket #82</ulink>.
+</para>
 </section>
 </section>
 </section>
@@ -1717,7 +1724,7 @@ volatile int ibsta;
 	<entry>IbaUnAddr</entry>
 	<entry>0x1b</entry>
 	<entry>Nonzero if UNT (untalk) and UNL (unlisten) commands are automatically
-	sent after a completed io operation using this descriptor.</entry>
+	sent after a completed ibrd* or ibwrt* operation using this descriptor.</entry>
 	<entry>device</entry>
 	</row>
 	<row>
@@ -2279,8 +2286,7 @@ volatile int ibsta;
 	<entry>IbcUnAddr</entry>
 	<entry>0x1b</entry>
 	<entry>If setting is nonzero then UNT (untalk) and UNL (unlisten) commands
-	are automatically sent after a completed io operation using this descriptor.
-	This option is off by default.</entry>
+	are automatically sent after a completed ibrd* or ibwrt* operation using this descriptor.
 	<entry>device</entry>
 	</row>
 	<row>
@@ -3021,18 +3027,24 @@ volatile int ibsta;
 	Description
 	</title>
 	<para>
-	If the <parameter>online</parameter> is zero, then ibonl() frees the
+	If the parameter <parameter>online</parameter> is zero, then ibonl() frees the
 	resources associated with the board or device descriptor
 	<parameter>ud</parameter>.  The descriptor cannot be used again after the
-	ibonl() call.
+	ibonl() call. The parameter <parameter>ud</parameter> cannot be a board
+	index (aka minor).
 	</para>
 	<para>
-	If the <parameter>online</parameter> is nonzero, then all the settings
+	If the parameter <parameter>online</parameter> is nonzero, then all the settings
 	associated with the descriptor (GPIB address, end-of-string mode, timeout,
 	etc.) are reset to their 'default' values.  The 'default' values are
 	the settings the descriptor had when it was first obtained with
 	<link LINKEND="reference-function-ibdev">ibdev()</link> or
 	<link LINKEND="reference-function-ibfind">ibfind()</link>.
+	The parameter <parameter>ud</parameter> can be a board index
+	(aka minor). The 'default' values are the standard default
+	values as modified by the
+	corresponding <link LINKEND="configuration-gpib-conf">gpib.conf</link> 
+	interface definition.
 	</para>
 </refsect1>
 <refsect1>
@@ -4459,7 +4471,7 @@ constant NOADDR.
 	</title>
 	<para>
 	DevClear() causes the interface board specified by <parameter>board_desc</parameter>
-	to send the clear command to the GPIB addresses specified by <parameter>address</parameter>.  The results of the serial polls are stored into <parameter>resultList</parameter>.
+	to send the clear command to the GPIB address specified by <parameter>address</parameter>.
 	If you wish to clear multiple devices simultaneously, use
 	<link LINKEND="reference-function-devclearlist">DevClearList()</link>
 	</para>
