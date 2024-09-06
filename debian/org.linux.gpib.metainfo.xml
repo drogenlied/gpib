@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+  <id>org.linux.gpib</id>
+  <metadata_license>GPLv2</metadata_license>
+  <name>libgpib-bin</name>
+  <summary>Control GPIB/HP-IB/IEEE 488 hardware through an interface device</summary>
+  <description>
+    <p>
+    libgpib provides the means to control devices connected to a GPIB/HP-IB/IEEE 488
+    bus through a GPIB interface.
+    </p>
+  </description>
+  <provides>
+    <modalias>usb:v3923p702Bd*</modalias>
+    <modalias>usb:v3923p713Bd*</modalias>
+    <modalias>usb:v3923p702Ad*</modalias>
+    <modalias>usb:v3923p709Bd*</modalias>
+    <modalias>usb:v3923p7618d*</modalias>
+    <modalias>usb:v3923p725Cd*</modalias>
+    <modalias>usb:v3923p725Dd*</modalias>
+
+    <modalias>usb:v0957p0007d*</modalias>
+    <modalias>usb:v0957p0518d*</modalias>
+    <modalias>usb:v0957p0107d*</modalias>
+    <modalias>usb:v0957p0718d*</modalias>
+  </provides>
+</component>

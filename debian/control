@@ -2,8 +2,10 @@ Source: gpib
 Section: science
 Priority: optional
 Maintainer: Gudjon I. Gudjonsson <gudjon@gudjon.org>
+X-DH-Compat: 13
 Build-Depends: debhelper (>= 13),
                dh-python,
+               dh-dkms,
                dkms,
                bison,
                flex,

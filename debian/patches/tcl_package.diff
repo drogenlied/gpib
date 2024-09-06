@@ -16,7 +16,7 @@ Index: debian-gpib/linux-gpib-user/language/tcl/ibCmds.c
  		         (ClientData) NULL,
  			 (Tcl_CmdDeleteProc *) NULL );
  
-+    Tcl_PkgProvide (interp, "gpib", "4.3.5");
++    Tcl_PkgProvide (interp, "gpib", "4.3.7");
      return TCL_OK;
  }
  

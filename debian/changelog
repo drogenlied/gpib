@@ -1,7 +1,8 @@
-gpib (4.3.5-1.1+2053) UNRELEASED; urgency=medium
+gpib (4.3.7-rc1+2106) UNRELEASED; urgency=medium
 
   [ Jan Binder ]
-  * packaging
+  * new upstream release 4.3.7-rc1
+  * 
 
  -- Jan Binder <jan-git@nlogn.org>  Thu, 08 Jun 2023 10:29:55 +0200
 
